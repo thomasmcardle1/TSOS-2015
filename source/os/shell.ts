@@ -88,6 +88,7 @@ module TSOS {
             sc = new ShellCommand(this.shellLocation,
                                   "whereami",
                                   "-Your current location");
+            this.commandList[this.commandList.length] = sc;
 
             // ps  - list the running processes and their IDs
             // kill <id> - kills the specified process id.
@@ -246,6 +247,12 @@ module TSOS {
                 switch (topic) {
                     case "help":
                         _StdOut.putText("Help displays a list of (hopefully) valid commands.");
+                        break;
+                    case "date":
+                        _StdOut.putText("date displays the current date and time");
+                        break;
+                    case "whereami":
+                        _StdOut.putText("whereami tell you your current location");
                         break;
                     // TODO: Make descriptive MANual page entries for the the rest of the shell commands here.
                     default:
