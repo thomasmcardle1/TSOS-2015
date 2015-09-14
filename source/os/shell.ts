@@ -79,6 +79,16 @@ module TSOS {
                                   "<string> - Sets the prompt.");
             this.commandList[this.commandList.length] = sc;
 
+            //Date
+            sc = new ShellCommand(this.shellDate,
+                                    "date",
+                                    "- Displays the Date.");
+            this.commandList[this.commandList.length] = sc;
+
+            sc = new ShellCommand(this.shellLocation,
+                                  "whereami",
+                                  "-Your current location");
+
             // ps  - list the running processes and their IDs
             // kill <id> - kills the specified process id.
 
@@ -285,6 +295,14 @@ module TSOS {
             } else {
                 _StdOut.putText("Usage: prompt <string>  Please supply a string.");
             }
+        }
+
+        public shellDate(args){
+            _StdOut.putText(Date.now());
+        }
+
+        public shellLocation(args){
+            _StdOut.putText("Unable to determine location. Please enable GPS");
         }
 
     }
