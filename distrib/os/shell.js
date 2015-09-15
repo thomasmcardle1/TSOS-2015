@@ -49,6 +49,18 @@ var TSOS;
             // prompt <string>
             sc = new TSOS.ShellCommand(this.shellPrompt, "prompt", "<string> - Sets the prompt.");
             this.commandList[this.commandList.length] = sc;
+            //Date
+            sc = new TSOS.ShellCommand(this.shellDate, "date", "- Displays the Date.");
+            this.commandList[this.commandList.length] = sc;
+            //whereami
+            sc = new TSOS.ShellCommand(this.shellLocation, "whereami", "-Your current location");
+            this.commandList[this.commandList.length] = sc;
+            //Joke command
+            sc = new TSOS.ShellCommand(this.shellJoke, "joke", "- Tells a funny joke");
+            this.commandList[this.commandList.length] = sc;
+            //Joke command
+            sc = new TSOS.ShellCommand(this.shellPunchLine, "punchline", "- Punch Line!!");
+            this.commandList[this.commandList.length] = sc;
             // ps  - list the running processes and their IDs
             // kill <id> - kills the specified process id.
             //
@@ -195,6 +207,22 @@ var TSOS;
                     case "help":
                         _StdOut.putText("Help displays a list of (hopefully) valid commands.");
                         break;
+                    case "ver":
+                        _StdOut.putText("Displays the current version");
+                        break;
+                    case "shutdown":
+                        _StdOut.putText("Shuts down the virtual OS but leaves the OS actually running..");
+                    case "date":
+                        _StdOut.putText("date displays the current date and time");
+                        break;
+                    case "whereami":
+                        _StdOut.putText("whereami tell you your current location");
+                        break;
+                    case "cls":
+                        _StdOut.putText("Clears the enter the screen");
+                        break;
+                    case "prompt":
+                        _StdOut.putText("Similar to  an echo command in windows. Reitterates the string after prompt.");
                     // TODO: Make descriptive MANual page entries for the the rest of the shell commands here.
                     default:
                         _StdOut.putText("No manual entry for " + args[0] + ".");
@@ -245,6 +273,20 @@ var TSOS;
             else {
                 _StdOut.putText("Usage: prompt <string>  Please supply a string.");
             }
+        };
+        Shell.prototype.shellDate = function (args) {
+            var date = new Date();
+            var currentDate = new Date().toLocaleDateString();
+            _StdOut.putText("The current date is " + currentDate);
+        };
+        Shell.prototype.shellLocation = function (args) {
+            _StdOut.putText("You are probably sitting at your computer");
+        };
+        Shell.prototype.shellJoke = function (args) {
+            _StdOut.putText("What do u get when u put root beer in a square glass?");
+        };
+        Shell.prototype.shellPunchLine = function (args) {
+            _StdOut.putText("A: Beer");
         };
         return Shell;
     })();
